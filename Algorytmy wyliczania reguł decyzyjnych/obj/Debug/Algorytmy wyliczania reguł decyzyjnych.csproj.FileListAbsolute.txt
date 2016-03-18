@@ -1,0 +1,12 @@
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Algorytmy wyliczania reguł decyzyjnych.exe.config
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Algorytmy wyliczania reguł decyzyjnych.exe
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Algorytmy wyliczania reguł decyzyjnych.pdb
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.csprojResolveAssemblyReference.cache
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy_wyliczania_reguł_decyzyjnych.Properties.Resources.resources
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.csproj.GenerateResource.Cache
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.exe
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.pdb
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy_wyliczania_reguł_decyzyjnych.AWRDForm.resources
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.dll
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.pdb
+C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.xml
