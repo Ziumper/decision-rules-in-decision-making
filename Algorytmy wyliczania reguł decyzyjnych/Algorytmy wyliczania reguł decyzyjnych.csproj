@@ -52,6 +52,10 @@
       <HintPath>..\packages\Combinatorics.1.0.3.2\lib\net40\Combinatorics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="KwCombinatorics, Version=4.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\KwCombinatorics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />

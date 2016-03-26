@@ -10,3 +10,15 @@ C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjny
 C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.dll
 C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.pdb
 C:\Studia\Semestr II\SI\SI ćwiczenia\cw 1\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.xml
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Algorytmy wyliczania reguł decyzyjnych.exe.config
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.exe
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.pdb
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Algorytmy wyliczania reguł decyzyjnych.exe
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Algorytmy wyliczania reguł decyzyjnych.pdb
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.dll
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.pdb
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\bin\Debug\Combinatorics.xml
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.csprojResolveAssemblyReference.cache
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy_wyliczania_reguł_decyzyjnych.AWRDForm.resources
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy_wyliczania_reguł_decyzyjnych.Properties.Resources.resources
+C:\Users\Tomasz Komoszeski\Downloads\Algorytmy wyliczania reguł decyzyjnych\Algorytmy wyliczania reguł decyzyjnych\obj\Debug\Algorytmy wyliczania reguł decyzyjnych.csproj.GenerateResource.Cache

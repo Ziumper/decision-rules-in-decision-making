@@ -72,7 +72,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             regułyDoFiltrowania.Add(mojeRegułyNRzędu);
             for(int i= 2; i < ilośćAtrybutów; i++)
             {
-                
+                pBładowanie.PerformStep();
                 Reguła[] mojeRegułyNRzędu2 = GenerujReguły(macierzNieodróżnialności, daneZPliku, i+1, atrybuty);
               
                 foreach(Reguła[] x in regułyDoFiltrowania)
@@ -80,7 +80,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                      mojeRegułyNRzędu2 = FiltrujReguły(mojeRegułyNRzędu2, x, daneZPliku);
                 }
                 // nie ma już więcej reguł po co więc liczyć dalej ?
-                if (mojeRegułyNRzędu2.Length == 0) break;
+                //if (mojeRegułyNRzędu2.Length == 0) break;
                 regułyDoFiltrowania.Add(mojeRegułyNRzędu2);
                 listarzędów.Add(mojeRegułyNRzędu2);
             }
@@ -101,87 +101,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             }
 
             rtbWyniki.Text = napis;
-            //int[][][] regu213 = GenerujReguły(macierzNieodróżnialności, 1, ilośćAtrybutów);
-            //int[] regułyIRzędu = GenerujReguły(macierzNieodróżnialności, daneZPliku);
-            //macierzNieodróżnialności = Uzupełnij(macierzNieodróżnialności, regułyIRzędu);//uzupełniam
-
-            ////pierwsze trzy rzędy oddzielnie zrobione
-            ////resztę liczę po kolei 
-            ////1.GenerujeWszystkie
-            ////2.Filtruje Wszystkie
-            ////3.Generuje reguły
-            ////4.Liczę support
-            ////5. Wyświetlam
-
-            ////do Zrobić kalkulator 
-
-            //int[][][] regułyIIRzędu = GenerujReguły(macierzNieodróżnialności, 2, ilośćAtrybutów);
-            //int[][][] regułyIIIRzędu = GenerujReguły(macierzNieodróżnialności, 3, ilośćAtrybutów);
-
-            ////Filtruje z rozwiązań niższych rzędów.
-            //regułyIIRzędu = FiltrujReguły(regułyIIRzędu, regułyIRzędu);
-            //regułyIIRzędu = FiltrujReguły(regułyIIRzędu, regu213,1);
-            //regułyIIIRzędu = FiltrujReguły(regułyIIIRzędu, regułyIRzędu);
-            //regułyIIIRzędu = FiltrujReguły(regułyIIIRzędu, regu213, 1);
-            //regułyIIIRzędu = FiltrujReguły(regułyIIIRzędu, regułyIIRzędu, 2);
-
-            ////właściwe reguły
-            //Reguła[] listaRegułIrząd = GenerujListaReguł(regu213, daneZPliku, 1);
-            //Reguła[] listaRegułIIRzędu = GenerujListaReguł(regułyIIRzędu, daneZPliku, 2);
-            //Reguła[] listaRegułaIIIRzędu = GenerujListaReguł(regułyIIIRzędu, daneZPliku, 3);
-
-            ////podlicz i obetnij
-            //Reguła[] lista2I = GenerujListaReguł(regu213, daneZPliku, 1);
-            //listaRegułIrząd = PoliczSupport(listaRegułIrząd, daneZPliku, 1, lista2I);
-            //Reguła[] lista2II = GenerujListaReguł(regułyIIRzędu, daneZPliku, 2);
-            //listaRegułIIRzędu = PoliczSupport(listaRegułIIRzędu, daneZPliku, 2, lista2II);
-            //Reguła[] lista2III = GenerujListaReguł(regułyIIIRzędu, daneZPliku, 3);
-            //listaRegułaIIIRzędu = PoliczSupport(listaRegułaIIIRzędu, daneZPliku, 3, lista2III);
-            //listarzędów.Add(listaRegułIrząd);
-            //listarzędów.Add(listaRegułIIRzędu);
-            //listarzędów.Add(listaRegułaIIIRzędu);
-
-            //listatablicrzędów.Add(regułyIIRzędu);
-            //listatablicrzędów.Add(regułyIIIRzędu);
-            ////dla reszty
-            //int licznik = 1;
-            //string napis = "";
-            //foreach (Reguła[] x in listarzędów)
-            //{
-            //    if (x.Length == 0) break;
-            //    napis += ZapiszWyniki(x, licznik++);
-
-            //}
-
-            //for (int i = 3; i < ilośćAtrybutów; i++)
-            //{
-            //    int[][][] regułyNRzędu = GenerujReguły(macierzNieodróżnialności, i + 1, ilośćAtrybutów);
-            //    regułyNRzędu = FiltrujReguły(regułyNRzędu, regułyIRzędu);
-            //    for (int j = 0; j < listatablicrzędów.ToArray().Length; j++)
-            //    {
-            //        regułyNRzędu = FiltrujReguły(regułyNRzędu, listatablicrzędów[j], j + 2);//sprawdzaj czy nie zawiera reguły niższego rzędu
-            //    }
-            //    pBładowanie.PerformStep();
-            //    Reguła[] listaN = GenerujListaReguł(regułyNRzędu, daneZPliku, i + 1);
-            //    Reguła[] listaNKopia = GenerujListaReguł(regułyNRzędu, daneZPliku, i + 1);
-            //    listaN = PoliczSupport(listaN, daneZPliku, i + 1, listaNKopia);
-            //    if (listaN.Length == 0) break;
-            //    listarzędów.Add(listaN);
-            //    napis += ZapiszWyniki(listaN, i + 1);
-
-            //}
-            //for (int i = pBładowanie.Value; i < pBładowanie.Maximum; i++)
-            //{
-            //    pBładowanie.PerformStep();
-            //}
-
-            //rtbWyniki.Text = napis;
-
-
-
-
-
-
+            
         }
         //NOWE METODY EXHAUSTIVE
         private Reguła[] GenerujReguły(int[][][] macierzNieodróżnialności, int[][] daneZPliku, int rząd, int[] atrybuty)
@@ -750,8 +670,11 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                         if (i == rząd - 1) napis += "=";
                         else napis += "&";
                     }
+                    if (x.Support > 1)
+                        napis += ">(d=" + x.Decyzja.ToString() + ")" + "[" + x.Support.ToString() + "]\n";
+                    else napis += ">(d=" + x.Decyzja.ToString() + ")\n";
 
-                    napis += ">(d=" + x.Decyzja.ToString() + ")[" + x.Support.ToString() + "]\n";
+
                 }
             }
             return napis;
@@ -1110,8 +1033,9 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                         if (i == rząd - 1) napis += "=";
                         else napis += "&";
                     }
-
+                if (reguła.Support > 1)
                     napis += ">(d=" + reguła.Decyzja.ToString() + ")[" + reguła.Support.ToString() + "]\n";
+                else napis += ">(d=" + reguła.Decyzja.ToString() + ")\n";
                 }
             
             return napis;
