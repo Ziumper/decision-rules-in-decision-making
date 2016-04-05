@@ -832,12 +832,15 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                     pBładowanie.PerformStep();
                     klasaDecyzyjna = OgraniczModuł(klasaDecyzyjna, max);
                     atrybuty = OgraniczDeskryptor(atrybuty, max);
-                    if (!CzySprzeczna(reguła)) break;//dodaj flage która sprawdza czy wystąpiła reguła
+                    if (!CzySprzeczna(reguła)) break;
+                    else if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów) goto kotwica; 
                 }
                 //podlicz support wykasuj tam gdzie występuje
                 reguła = PoliczSupport(klasaDecyzyjna, reguła);
                 listaReguł.Add(reguła);
+                kotwica:;
                 klasyDecyzyjne[k] = OgraniczModuł(klasyDecyzyjne[k], klasaDecyzyjna);
+               
             } while (!CzyPusta(klasyDecyzyjne[k]));
 
             string napis = "";
@@ -941,6 +944,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             return reguła;
         }
         private bool CzySprzeczna(Reguła reguła) {
+
             for (int j = 0; j < reguła.IndeksyAtrybutów.Length; j++)
             {
                 bool flaga = false;
