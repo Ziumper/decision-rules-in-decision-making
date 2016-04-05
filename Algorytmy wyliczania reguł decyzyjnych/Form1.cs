@@ -15,6 +15,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
     {
         int ilośćAtrybutów;
         int[][] daneZPliku;
+      
         public AWRDForm()
         {
             InitializeComponent();
@@ -46,8 +47,8 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                     daneZPliku[i][j] = int.Parse(miejscaParkingowe[j]);
                 }
             }
+          
         }
-
         private void btnExhaustive_Click(object sender, EventArgs e)
         {
             rtbWyniki.Text = "";
@@ -833,7 +834,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                     klasaDecyzyjna = OgraniczModuł(klasaDecyzyjna, max);
                     atrybuty = OgraniczDeskryptor(atrybuty, max);
                     if (!CzySprzeczna(reguła)) break;
-                    else if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów) goto kotwica; 
+                   // else if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów) goto kotwica; //szczególny przypadek!
                 }
                 //podlicz support wykasuj tam gdzie występuje
                 reguła = PoliczSupport(klasaDecyzyjna, reguła);
@@ -1038,9 +1039,24 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                         else napis += "&";
                     }
                 if (reguła.Support > 1)
-                    napis += ">(d=" + reguła.Decyzja.ToString() + ")[" + reguła.Support.ToString() + "]\n";
-                else napis += ">(d=" + reguła.Decyzja.ToString() + ")\n";
+                {
+                    if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów)
+                    {
+                        napis += "> Reguła z alternatywną decyzją! \n";
+                    }
+                    else napis += ">(d=" + reguła.Decyzja.ToString() + ")[" + reguła.Support.ToString() + "]\n";
                 }
+
+                else
+                {
+                    if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów)
+                    {
+                        napis += "> Reguła z alternatywną decyzją! \n";
+                    }
+                    else napis += ">(d=" + reguła.Decyzja.ToString() + ")\n";
+                }
+
+           }
             
             return napis;
         }
