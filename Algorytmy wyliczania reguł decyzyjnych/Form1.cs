@@ -64,12 +64,17 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             }
             //obliczanie pierwszego i II rzędu.
             Reguła[] mojeRegułyNRzędu = GenerujReguły(macierzNieodróżnialności, daneZPliku, 1, atrybuty);
+            Reguła[] d2 = GenerujReguły(macierzNieodróżnialności, daneZPliku, 1, atrybuty);
             macierzNieodróżnialności = Uzupełnij(macierzNieodróżnialności, mojeRegułyNRzędu);
             listarzędów.Add(mojeRegułyNRzędu);
+            
             mojeRegułyNRzędu = GenerujReguły(macierzNieodróżnialności, daneZPliku,2, atrybuty);
-            listarzędów.Add(mojeRegułyNRzędu);
 
+            mojeRegułyNRzędu = FiltrujReguły(mojeRegułyNRzędu, d2, daneZPliku);
+            listarzędów.Add(mojeRegułyNRzędu);
+            
             List<Reguła[]> regułyDoFiltrowania = new List<Reguła[]>();
+            regułyDoFiltrowania.Add(d2);
             regułyDoFiltrowania.Add(mojeRegułyNRzędu);
             for(int i= 2; i < ilośćAtrybutów; i++)
             {
