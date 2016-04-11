@@ -50,5 +50,13 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
         public bool Aktywn { get { return aktywn; } set { aktywn = value; } }
         public int Obiekt { get { return obiekt; } set { obiekt = value; } }
         public int[] IndeksyObiektów { get { return indeksyObiektów; } set { indeksyObiektów = value; } }
+
+        public void UzupelnijDeskryptory()
+        {
+            for (int i = 0; i < indeksyAtrybutów.Length; i++)
+            {
+                deskryptory[indeksyAtrybutów[i]] = wartościAtrybutów[i];
+            }
+        }
     }
 }

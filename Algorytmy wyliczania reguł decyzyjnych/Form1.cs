@@ -977,25 +977,40 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             return reguła;
         }
         private bool CzySprzeczna(Reguła reguła) {
-
-            for (int j = 0; j < reguła.IndeksyAtrybutów.Length; j++)
+            reguła.UzupelnijDeskryptory();
+            int licznik=0;
+            for (int i = 0; i < daneZPliku.Length; i++)
             {
-                bool flaga = false;
-                for (int i = 0; i < daneZPliku.Length; i++)
-                    if (reguła.Decyzja == daneZPliku[i].Last<int>()) continue;
-                    else if (daneZPliku[i][reguła.IndeksyAtrybutów[j]] == reguła.WartościAtrybutów[j])
-                    {
-                        flaga = true;
-                        break;
-                    }
-
-                if (flaga == false)
+                
+                if(reguła.Decyzja != daneZPliku[i].Last<int>())
+                foreach(var deskryptor in reguła.deskryptory)
                 {
-                    return false;
+                        if (daneZPliku[i][deskryptor.Key] != deskryptor.Value) { break; }
+                        licznik++;
+                        if (licznik == reguła.deskryptory.Count())
+                            return true;
                 }
-
+                licznik = 0; 
             }
-            return true;
+            return false;
+           //for (int j = 0; j < reguła.IndeksyAtrybutów.Length; j++)
+           // {
+           //     bool flaga = false;
+           //     for (int i = 0; i < daneZPliku.Length; i++)
+           //         if (reguła.Decyzja == daneZPliku[i].Last<int>()) continue;
+           //         else if (daneZPliku[i][reguła.IndeksyAtrybutów[j]] == reguła.WartościAtrybutów[j])
+           //         {
+           //             flaga = true;
+           //             break;
+           //         }
+
+           //     if (flaga == false)
+           //     {
+           //         return false;
+           //     }
+
+           // }
+           // return true;
         } 
         private int[] OgraniczDeskryptor (int[] atrybuty , Deskryptor max)
         {
