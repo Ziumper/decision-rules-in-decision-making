@@ -147,9 +147,13 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             {
                 for (int j = 0; j < regułyWyższegoRzędu.Length; j++)
                 {
-                    if (regułyWyższegoRzędu[j] == null) continue;
-                    if (regułyWyższegoRzędu[j].Decyzja == regułyNiższegoRzędu[i].Decyzja && CzyZawiera(regułyWyższegoRzędu[j].IndeksyAtrybutów, regułyNiższegoRzędu[i].IndeksyAtrybutów) && CzyZawiera(regułyWyższegoRzędu[j].WartościAtrybutów, regułyNiższegoRzędu[i].WartościAtrybutów)) regułyWyższegoRzędu[j] = null;
-                    
+                  //  if (regułyWyższegoRzędu == null) continue;
+                    if(CzyZawiera(regułyWyższegoRzędu[j], regułyNiższegoRzędu[i])) regułyWyższegoRzędu[j] = null;
+                    //if (regułyWyższegoRzędu[j] == null) continue;
+                    //if (regułyWyższegoRzędu[j].Decyzja == 
+                    //    regułyNiższegoRzędu[i].Decyzja &&
+                    //    CzyZawiera(regułyWyższegoRzędu[j].IndeksyAtrybutów, regułyNiższegoRzędu[i].IndeksyAtrybutów) && 
+                    //    CzyZawiera(regułyWyższegoRzędu[j].WartościAtrybutów, regułyNiższegoRzędu[i].WartościAtrybutów)) regułyWyższegoRzędu[j] = null;
                 }
             }
             //wyczyść z nulli
@@ -159,6 +163,29 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             }
             return tmp.ToArray();
         }
+
+        private bool CzyZawiera(Reguła reguła1, Reguła reguła2)
+        {
+            if (reguła1 == null) return false;
+            foreach (var deskryptorR2 in reguła2.deskryptory)
+            {
+                bool zawiera = false;
+                foreach (var deskryptorR1 in reguła1.deskryptory)
+                {
+                    
+                    if (deskryptorR2.Key == deskryptorR1.Key && deskryptorR2.Value == deskryptorR1.Value)
+                    {
+                        zawiera = true;
+                        break;
+                    }
+                 
+                }
+                if (!zawiera) return false;
+            }
+            return true;
+
+        }
+
         private int[][][] Uzupełnij(int[][][] macierzNieodroznialnosci, Reguła[] mojeReguły)
         {
             foreach(Reguła x in mojeReguły)//po regułach

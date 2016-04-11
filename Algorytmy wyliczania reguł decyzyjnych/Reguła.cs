@@ -16,7 +16,8 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
         private int decyzja = 0;
         private bool aktywn = false;
         private int obiekt = 0;
-
+        public Dictionary<int, int> deskryptory = new Dictionary<int, int>();
+        
         public Reguła() { }
 
         public Reguła(int rząd)
@@ -28,10 +29,15 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
 
         public Reguła(int rząd, int support, int[] wartościAtrybutów, int[] indeksyAtrybutów, int decyzja, int obiekt)
         {
+
             this.rząd = rząd;
             this.support = support;
             this.wartościAtrybutów = wartościAtrybutów;
             this.indeksyAtrybutów = indeksyAtrybutów;
+            for(int i = 0; i < indeksyAtrybutów.Length; i++)
+            {
+                deskryptory[indeksyAtrybutów[i]] = wartościAtrybutów[i];
+            }
             this.decyzja = decyzja;
             this.obiekt = obiekt;
         }
@@ -44,7 +50,5 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
         public bool Aktywn { get { return aktywn; } set { aktywn = value; } }
         public int Obiekt { get { return obiekt; } set { obiekt = value; } }
         public int[] IndeksyObiektów { get { return indeksyObiektów; } set { indeksyObiektów = value; } }
-
-        
     }
 }
