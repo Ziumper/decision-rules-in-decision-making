@@ -15,6 +15,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
     {
         int ilośćAtrybutów;
         int[][] daneZPliku;
+        int[] klasyDecyzyjne;
       
         public AWRDForm()
         {
@@ -47,7 +48,9 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                     daneZPliku[i][j] = int.Parse(miejscaParkingowe[j]);
                 }
             }
-          
+            List<int> klasy = PoliczKlasyDecyzyjne();
+            klasy.Sort();
+            klasyDecyzyjne = klasy.ToArray();
         }
         private void btnExhaustive_Click(object sender, EventArgs e)
         {
@@ -876,6 +879,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                
             } while (!CzyPusta(klasyDecyzyjne[k]));
 
+            listaReguł = OgarniczAlternatywe(listaReguł);
             string napis = "";
             foreach(Reguła x in listaReguł)
             {
@@ -889,6 +893,34 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
            
 
         }
+
+        private List<Reguła> OgarniczAlternatywe(List<Reguła> listaReguł)
+        {
+            List<Reguła> listaAlternatywnych = new List<Reguła>();
+            for(int i = 0; i < listaReguł.Count(); i++)
+            {
+                listaReguł[i].UzupelnijDeskryptory();
+                if (CzySprzeczna(listaReguł[i]) && (listaReguł[i].IndeksyAtrybutów.Length == ilośćAtrybutów)) {
+                    listaAlternatywnych.Add(listaReguł[i]);
+                    listaReguł.Remove(listaReguł[i]);
+                }
+            }
+            Reguła[] tablica = listaAlternatywnych.ToArray();
+            for(int i = 0; i < tablica.Length; i++)
+            {
+                if (tablica[i] != null)
+                for(int j = 0; j<tablica.Length; j++)
+                {
+                        if (tablica[j] != null && CzyZawiera(tablica[i], tablica[j]) && tablica[j].Decyzja!= tablica[i].Decyzja) { tablica[j] = null; }  
+                }
+            }
+            foreach(Reguła x in tablica)
+            {
+                if (x != null) listaReguł.Add(x);
+            }
+            return listaReguł;
+        }
+
         //BLOK LEM2
         private int[][][] PodzielNaKlasyDecyzyjne(int[][] daneZPliku)
         {
@@ -1089,7 +1121,17 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                 {
                     if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów)
                     {
-                        napis += "> Reguła z alternatywną decyzją! \n";
+                        napis += "> ";
+                        foreach(int d in klasyDecyzyjne)
+                        {
+                            if (d == klasyDecyzyjne.Last<int>())
+                            {
+                                napis += "(d=" + d + ")\n";
+                            }
+                            else napis +="(d=" + d + ") v ";
+                         
+                        }
+                       
                     }
                     else napis += ">(d=" + reguła.Decyzja.ToString() + ")[" + reguła.Support.ToString() + "]\n";
                 }
@@ -1098,7 +1140,17 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                 {
                     if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów)
                     {
-                        napis += "> Reguła z alternatywną decyzją! \n";
+                        napis += "> ";
+                        foreach (int d in klasyDecyzyjne)
+                        {
+                            if (d == klasyDecyzyjne.Last<int>())
+                            {
+                                napis += "(d=" + d + ")\n";
+                            }
+                            else napis += "(d=" + d + ") v ";
+
+                        }
+
                     }
                     else napis += ">(d=" + reguła.Decyzja.ToString() + ")\n";
                 }
@@ -1106,6 +1158,17 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
            }
             
             return napis;
+        }
+        private List<int> PoliczKlasyDecyzyjne()
+        {
+            List<int> klasyDecyzyjne = new List<int>();
+            klasyDecyzyjne.Add(daneZPliku[0].Last<int>());//Pobierz pierwszy element
+            for (int i = 1; i < daneZPliku.Length; i++)
+            {
+                if (!klasyDecyzyjne.Contains(daneZPliku[i].Last<int>()))
+                    klasyDecyzyjne.Add(daneZPliku[i].Last<int>());
+            }
+            return klasyDecyzyjne;
         }
     }
 }
