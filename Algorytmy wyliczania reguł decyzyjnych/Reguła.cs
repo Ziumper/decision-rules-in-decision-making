@@ -17,6 +17,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
         private bool aktywn = false;
         private int obiekt = 0;
         public Dictionary<int, int> deskryptory = new Dictionary<int, int>();
+
         
         public Reguła() { }
 

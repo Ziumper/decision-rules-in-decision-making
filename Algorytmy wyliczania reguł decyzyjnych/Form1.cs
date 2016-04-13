@@ -65,21 +65,9 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
             {
                 atrybuty[i] = i;
             }
-            //obliczanie pierwszego i II rzędu.
-            Reguła[] mojeRegułyNRzędu = GenerujReguły(macierzNieodróżnialności, daneZPliku, 1, atrybuty);
-            Reguła[] d2 = GenerujReguły(macierzNieodróżnialności, daneZPliku, 1, atrybuty);
-            macierzNieodróżnialności = Uzupełnij(macierzNieodróżnialności, mojeRegułyNRzędu);
-            listarzędów.Add(mojeRegułyNRzędu);
-            
-            mojeRegułyNRzędu = GenerujReguły(macierzNieodróżnialności, daneZPliku,2, atrybuty);
-
-            mojeRegułyNRzędu = FiltrujReguły(mojeRegułyNRzędu, d2, daneZPliku);
-            listarzędów.Add(mojeRegułyNRzędu);
-            
+            //Uzupełnij(macierzNieodróżnialności, GenerujReguły(macierzNieodróżnialności, daneZPliku, 1, atrybuty));
             List<Reguła[]> regułyDoFiltrowania = new List<Reguła[]>();
-            regułyDoFiltrowania.Add(d2);
-            regułyDoFiltrowania.Add(mojeRegułyNRzędu);
-            for(int i= 2; i < ilośćAtrybutów; i++)
+            for(int i= 0; i < ilośćAtrybutów; i++)
             {
                 pBładowanie.PerformStep();
                 Reguła[] mojeRegułyNRzędu2 = GenerujReguły(macierzNieodróżnialności, daneZPliku, i+1, atrybuty);
@@ -874,7 +862,7 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                 //podlicz support wykasuj tam gdzie występuje
                 reguła = PoliczSupport(klasaDecyzyjna, reguła);
                 listaReguł.Add(reguła);
-                kotwica:;
+                //kotwica:;
                 klasyDecyzyjne[k] = OgraniczModuł(klasyDecyzyjne[k], klasaDecyzyjna);
                
             } while (!CzyPusta(klasyDecyzyjne[k]));
@@ -897,28 +885,42 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
         private List<Reguła> OgarniczAlternatywe(List<Reguła> listaReguł)
         {
             List<Reguła> listaAlternatywnych = new List<Reguła>();
-            for(int i = 0; i < listaReguł.Count(); i++)
+            foreach(Reguła x in listaReguł) {
+                x.UzupelnijDeskryptory();
+            }
+       
+            int licznik = listaReguł.Count();
+            for(int i = 0; i < licznik; i++)
             {
-                listaReguł[i].UzupelnijDeskryptory();
                 if (CzySprzeczna(listaReguł[i]) && (listaReguł[i].IndeksyAtrybutów.Length == ilośćAtrybutów)) {
                     listaAlternatywnych.Add(listaReguł[i]);
-                    listaReguł.Remove(listaReguł[i]);
+                    listaReguł[i] = null;
                 }
             }
+            List<Reguła> nowaLista = new List<Reguła>();
+            Reguła[] kopia = listaReguł.ToArray();
+            for(int i = 0; i < licznik; i++)
+            {
+                if (kopia[i] != null) nowaLista.Add(kopia[i]);
+            }
             Reguła[] tablica = listaAlternatywnych.ToArray();
+           
             for(int i = 0; i < tablica.Length; i++)
             {
                 if (tablica[i] != null)
                 for(int j = 0; j<tablica.Length; j++)
                 {
-                        if (tablica[j] != null && CzyZawiera(tablica[i], tablica[j]) && tablica[j].Decyzja!= tablica[i].Decyzja) { tablica[j] = null; }  
+                        if (tablica[j] != null && CzyZawiera(tablica[i], tablica[j]) && tablica[j].Decyzja!= tablica[i].Decyzja)
+                        {
+                            tablica[j] = null;
+                        }  
                 }
             }
             foreach(Reguła x in tablica)
             {
-                if (x != null) listaReguł.Add(x);
+                if (x != null) nowaLista.Add(x);
             }
-            return listaReguł;
+            return nowaLista;
         }
 
         //BLOK LEM2
@@ -1122,16 +1124,13 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                     if (CzySprzeczna(reguła) && reguła.IndeksyAtrybutów.Length == ilośćAtrybutów)
                     {
                         napis += "> ";
-                        foreach(int d in klasyDecyzyjne)
+                        foreach (int d in klasyDecyzyjne)
                         {
-                            if (d == klasyDecyzyjne.Last<int>())
-                            {
-                                napis += "(d=" + d + ")\n";
-                            }
-                            else napis +="(d=" + d + ") v ";
-                         
+                            if (d == klasyDecyzyjne.Last<int>()) { napis += "(d=" + d + ")\n"; break; }
+                            napis += "(d=" + d + ")v";
+                           
                         }
-                       
+
                     }
                     else napis += ">(d=" + reguła.Decyzja.ToString() + ")[" + reguła.Support.ToString() + "]\n";
                 }
@@ -1143,12 +1142,9 @@ namespace Algorytmy_wyliczania_reguł_decyzyjnych
                         napis += "> ";
                         foreach (int d in klasyDecyzyjne)
                         {
-                            if (d == klasyDecyzyjne.Last<int>())
-                            {
-                                napis += "(d=" + d + ")\n";
-                            }
-                            else napis += "(d=" + d + ") v ";
-
+                            if (d == klasyDecyzyjne.Last<int>()) { napis += "(d=" + d + ")\n"; break; }
+                            napis += "(d=" + d + ")v";
+                           
                         }
 
                     }
